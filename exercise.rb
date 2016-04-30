@@ -30,7 +30,21 @@ class Exercise
   # eg. the Fibonacci sequence up to 6 terms is (1, 1, 2, 3, 5, 8),
   # and the sum of its even numbers is (2 + 8) = 10
   def self.even_fibonacci(nth)
-    # TODO: Implement this method
-  end
+    return nth if nth == 0
 
+    sequence = []
+    a = 0
+    b = 1
+    nth.times do
+      sequence << b
+      c = a + b
+      a = b
+      b = c
+    end
+    
+    return sequence.reduce(0) do |sum, n|
+      n.even? ? sum + n : sum
+    end
+  end
+  
 end
